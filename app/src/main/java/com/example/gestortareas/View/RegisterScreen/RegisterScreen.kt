@@ -1,7 +1,6 @@
 package com.example.gestortareas.View.RegisterScreen
 
 import androidx.compose.ui.text.font.FontWeight
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.background
 import androidx.compose.material3.*

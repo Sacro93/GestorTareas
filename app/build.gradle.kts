@@ -58,6 +58,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.github.skydoves:landscapist-glide:2.2.1")
 
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("androidx.compose.material3:material3:1.2.1")
+ implementation("androidx.compose.material:material-icons-extended:1.3.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
