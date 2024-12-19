@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.semantics.SemanticsProperties.Heading
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -60,7 +59,7 @@ fun RecentTaskSection(
                         .fillMaxWidth()
                         .height(150.dp),
                     placeholder = ColorPainter(MaterialTheme.colorScheme.primary),
-                    error = @androidx.compose.runtime.Composable {
+                    error = @Composable {
                         Icon(
                             imageVector = Icons.Default.Error,
                             contentDescription = "Error loading image")

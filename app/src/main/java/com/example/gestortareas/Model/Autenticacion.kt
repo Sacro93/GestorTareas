@@ -4,6 +4,9 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 
 //Utilizamos FirebaseAuth.getInstance() para interactuar con Firebase Authentication
+
+
+
 class Autenticacion(private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()) {
 
     // Función para registrar un usuario
@@ -14,5 +17,25 @@ class Autenticacion(private val firebaseAuth: FirebaseAuth = FirebaseAuth.getIns
         } catch (e: Exception) {
             Result.failure(e) // Error durante el registro
         }
+    }
+
+    // Función para iniciar sesión
+    suspend fun loginUser(email: String, password: String): Result<Unit> {
+        return try {
+            firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            Result.success(Unit) // Inicio de sesión exitoso
+        } catch (e: Exception) {
+            Result.failure(e) // Error durante el inicio de sesión
+        }
+    }
+
+    // Función para obtener el usuario actualmente autenticado
+    fun getCurrentUser(): String? {
+        return firebaseAuth.currentUser?.email // Devuelve el correo electrónico del usuario autenticado o null
+    }
+
+    // Función para cerrar sesión
+    fun logoutUser() {
+        firebaseAuth.signOut()
     }
 }

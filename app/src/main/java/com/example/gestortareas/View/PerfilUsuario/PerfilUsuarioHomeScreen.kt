@@ -1,5 +1,6 @@
 package com.example.gestortareas.View.PerfilUsuario
 
+import android.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -13,12 +14,16 @@ import androidx.compose.ui.res.painterResource
 
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.gestortareas.ViewModel.HomeScreenViewModel
+import com.example.gestortareas.ViewModel.HomeScreenViewModel.HomeScreenViewModel
 
 
 //falta ver como conectar con BD para cargar imagen correctamente y que se actualice correctamente nombre => sera actualizacion que se hara en PerfilUsuarioScreen ?
 @Composable
-fun PerfilUsuarioHomeScreen(viewModel: HomeScreenViewModel, onEditProfile: () -> Unit, onLogout: () -> Unit) {
+fun PerfilUsuarioHomeScreen(
+    viewModel: HomeScreenViewModel,
+    onEditProfile: () -> Unit,
+    onLogout: () -> Unit
+) {
     val userName by viewModel.userName.collectAsState()
     val profileImageUrl by viewModel.profileImageUrl.collectAsState()
 
@@ -32,8 +37,8 @@ fun PerfilUsuarioHomeScreen(viewModel: HomeScreenViewModel, onEditProfile: () ->
             modifier = Modifier
                 .size(50.dp)
                 .clip(CircleShape),
-            placeholder = painterResource(id = android.R.drawable.ic_menu_gallery),
-            error = painterResource(id = android.R.drawable.ic_menu_report_image)
+            placeholder = painterResource(id = R.drawable.ic_menu_gallery),
+            error = painterResource(id = R.drawable.ic_menu_report_image)
         )
         Spacer(modifier = Modifier.width(16.dp))
         Column {

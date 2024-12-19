@@ -1,5 +1,6 @@
 package com.example.gestortareas.View.LoginScreen
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +23,7 @@ class LoginViewModel(
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
     val loginState: StateFlow<LoginState> = _loginState.asStateFlow()
 
-    fun loginUser(email: String, password: String) {
+    fun loginUser(email: String, password: String, context: Context) {
         if (email.isEmpty() || password.isEmpty()) {
             _loginState.value = LoginState.Error("Los campos no pueden estar vacíos")
             return

@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.ksp
 
 plugins {
     alias(libs.plugins.android.application)
@@ -6,6 +7,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
     kotlin("plugin.serialization") version "1.9.10"
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -60,7 +64,15 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("androidx.compose.material3:material3:1.2.1")
- implementation("androidx.compose.material:material-icons-extended:1.3.0")
+    implementation("androidx.compose.material:material-icons-extended:1.3.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.50")
+// required if using navigation together with hilt
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    ksp("com.google.dagger:hilt-compiler:2.50")
+    ksp("com.google.dagger:hilt-android-compiler:2.50")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -1,4 +1,4 @@
-package com.example.gestortareas.ui.theme
+package com.example.gestortareas.View.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

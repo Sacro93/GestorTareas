@@ -1,5 +1,6 @@
 package com.example.gestortareas.View.PerfilUsuario
 
+import android.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -9,7 +10,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.gestortareas.ViewModel.HomeScreenViewModel
+import com.example.gestortareas.ViewModel.HomeScreenViewModel.HomeScreenViewModel
 
 //edicion del perfil completa
 
@@ -35,8 +36,8 @@ fun PerfilUsuarioScreen(
             modifier = Modifier
                 .size(100.dp)
                 .clip(CircleShape),
-            placeholder = painterResource(id = android.R.drawable.ic_menu_gallery),
-            error = painterResource(id = android.R.drawable.ic_menu_report_image)
+            placeholder = painterResource(id = R.drawable.ic_menu_gallery),
+            error = painterResource(id = R.drawable.ic_menu_report_image)
         )
         OutlinedTextField(
             value = userName,

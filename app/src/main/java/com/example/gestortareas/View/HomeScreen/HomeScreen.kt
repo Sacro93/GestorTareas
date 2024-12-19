@@ -1,24 +1,20 @@
 package com.example.gestortareas.View.HomeScreen
 
-
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.example.gestortareas.R
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LinkOff
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.gestortareas.View.PanelTareas.RecentTaskSection
-import com.example.gestortareas.ViewModel.HomeScreenViewModel
-
-
-import androidx.compose.material.icons.filled.Logout
-
-
+import com.example.gestortareas.ViewModel.HomeScreenViewModel.HomeScreenViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,54 +26,56 @@ fun HomeScreen(
     onViewTasks: () -> Unit,
     onCreateTask: () -> Unit
 ) {
-    val recentTask by viewModel.recentTask.collectAsState()
-    Scaffold (topBar = {
-        TopAppBar(title = { Text("Inicio") },
-            actions = {
-                IconButton(onClick = onSeeProfile) {
-                    Icon(
-                        imageVector = Icons.Filled.Person,
-                        contentDescription = "Ver Perfil"
-                    )
-                }
-                IconButton (onClick = onLogout) {
-                    Icon(
-                        imageVector = Icons.Default.LinkOff,
-                        contentDescription = "Cerrar Sesión"
-                    )
-                }
-            })
-    }) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(paddingValues)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            item {
-                if (recentTask != null) {
-                    RecentTaskSection(
-                        title = recentTask!!.name,
-                        description = recentTask!!.description,
-                        dateTime = recentTask!!.dateTime,
-                        imageUrl = recentTask!!.imageUrl
-                    )
-                } else {
-                    Text(
-                        text = "No hay tareas recientes.",
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
-            }
-            item { Button(onClick = onViewTasks) { Text("Ver Tareas") } }
-            item {
-                Button(onClick = onCreateTask) {
-                    Text(
-                        "Crear Nueva Tarea"
-                    )
-                }
-            }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Inicio") }
+            )
         }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            // Sección del usuario
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "Juan Pérez", style = MaterialTheme.typography)
+            }
+
+            // Botones de acción
+            Spacer(modifier = Modifier.height(16.dp))
+            Row {
+                Button(onClick = {}) {
+                    Text("Crear Tarea")
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Button(onClick = {}) {
+                    Text("Ver Tareas")
+                }
+            }
+
+            // Tarjeta de tarea próxima (vacía por ahora)
+            Spacer(modifier = Modifier.height(16.dp))
+            item {
+    MyBasicCard()
+}
+        }
+    }
+}
+
+@Composable
+fun MyBasicCard() {
+    Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(
+            text = stringResource(id = R.string.next_task),
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(16.dp)
+        )
     }
 }
